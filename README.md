@@ -62,10 +62,10 @@ The bot acts as a **central inbox inside Discord**, allowing you to receive mess
 ## 📸 Screenshots
 
 ### WhatsApp
-![WhatsApp Preview](https://i.imgur.com/TGAAt5Z.jpeg)
+![WhatsApp Preview](https://i.imgur.com/yu6Zg7T.png)
 
 ### Telegram
-![Telegram Preview](https://i.imgur.com/hIJfjjD.jpeg)
+![Telegram Preview](https://i.imgur.com/nlOfEnN.png)
 
 ---
 
