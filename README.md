@@ -34,10 +34,23 @@ The bot acts as a **central inbox inside Discord**, allowing you to receive mess
 - 📥 Import messages from **Telegram** (DMs and Groups)  
 - 📥 Import messages from **WhatsApp** (DMs and Groups)  
 - 📨 Forward messages to **Discord**  
-- 🧠 Ignore old/unread messages on startup  
 - 🏷️ Detect chat type (private / group)  
 - 📛 Show sender and group name  
 - ⚙️ Clean and modular architecture  
+
+### Discord → Other Platforms
+- 📤 Send messages from **Discord to Telegram**  
+- 📤 Send messages from **Discord to WhatsApp**:
+  - 📞 **Private chats (numbers)**  
+    - Phone numbers must be written **with prefix**, fully concatenated, e.g., `{Number}`  
+    - Format: `/whatsappnumber {Number} {Message}`
+  - 👥 **Group chats**  
+    - The **exact group name** must be used  
+    - Case-sensitive (uppercase and lowercase must match)  
+    - Format: `/whatsappgroup {GroupName} {Message}`  
+
+⚠️ For **WhatsApp private numbers**, a **manual whitelist** is required.  
+This whitelist can be managed **only by the bot owner**, for personal security and legal reasons.
 
 ### Other Discord Features
 - 🔔 Send alerts or notifications inside Discord  
@@ -45,31 +58,46 @@ The bot acts as a **central inbox inside Discord**, allowing you to receive mess
 - 🛠️ Admin/moderation utilities  
 - 🎯 Role or channel management (optional, depends on setup)  
 
-### Telegram Interaction
-- 📤 Send messages from **Discord to Telegram** using the `/telegramma` slash command  
+---
+
+## 📜 Commands
+
+### Discord (message export)
+- `/telegramma {ID} {Message}` → send message to Telegram channel or private chat  
+- `/whatsappnumber {Number} {Message}` → send message to WhatsApp private number (with prefix)  
+- `/whatsappgroup {GroupName} {Message}` → send message to WhatsApp group (exact name, case-sensitive)  
+
+### Telegram (message export)
+- `/channel_info` → get info of the channel or private chat  
+- `/discordia` → send message to Discord [to be implemented]  
+
+### WhatsApp (message export)
+- `/discordia` → send message to Discord [to be implemented]  
 
 ---
 
 ## 🧠 How It Works
 
 1. The **Discord bot is the core application**  
-2. Telegram and WhatsApp act only as **message sources**  
+2. Telegram and WhatsApp act as **message sources and targets**  
 3. Each incoming message is processed to extract:
-   - sender name
-   - chat type (private or group)
-   - group name (if applicable)
-4. Messages can also be **sent from Discord to Telegram**
-5. Everything is forwarded and managed inside Discord as a central hub
+   - sender name  
+   - chat type (private or group)  
+   - group name (if applicable)  
+4. Messages can be:
+   - imported **from Telegram and WhatsApp into Discord**  
+   - sent **from Discord to Telegram and WhatsApp**  
+5. Everything is centralized and managed inside Discord  
 
 ---
 
 ## 📸 Screenshots
 
 ### WhatsApp
-![WhatsApp Preview](https://i.imgur.com/yu6Zg7T.png)
+![WhatsApp Preview](https://i.imgur.com/TGAAt5Z.jpeg)
 
 ### Telegram
-![Telegram Preview](https://i.imgur.com/nlOfEnN.png)
+![Telegram Preview](https://imgur.com/a/M3tW2k4)
 
 ---
 
@@ -77,7 +105,7 @@ The bot acts as a **central inbox inside Discord**, allowing you to receive mess
 
 - Intended for personal automation and message aggregation  
 - The **source code will never be public**  
-- This **README is public** and only explains how the system works  
+- This **README is public** and exists only to explain how the system works  
 
 ---
 
