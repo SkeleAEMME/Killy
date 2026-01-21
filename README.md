@@ -1,4 +1,7 @@
-#English Version
+<div style="font-size:80px; font-weight:bold; color:#5865F2; font-family:Arial, sans-serif; text-align:center;">
+  KillyBot
+</div>
+
 
 # 🤖 KillyBot 🇬🇧
 
