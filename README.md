@@ -31,55 +31,55 @@ The bot acts as a **central inbox inside Discord**, allowing you to receive mess
 
 ## ✨ Features
 
-- 📥 Import messages from **Telegram** (DMs and Groups)  
-- 📥 Import messages from **WhatsApp** (DMs and Groups)  
-- 📨 Forward messages to **Discord**  
-- 🏷️ Detect chat type (private / group)  
-- 📛 Show sender and group name  
-- ⚙️ Clean and modular architecture  
+- 📥 Import messages from **Telegram** (DMs and Groups).  
+- 📥 Import messages from **WhatsApp** (DMs and Groups).  
+- 📨 Forward messages to **Discord.**  
+- 🏷️ Detect chat type (private / group).  
+- 📛 Show sender and group name.  
+- ⚙️ Clean and modular architecture.  
 
 ### Discord → Other Platforms
-- 📤 Send messages from **Discord to Telegram**  
+- 📤 Send messages from **Discord to Telegram.**  
 - 📤 Send messages from **Discord to WhatsApp**:
   - 📞 **Private chats (numbers)**  
     - Phone numbers must be written **with prefix**, fully concatenated, e.g., `{Number}`  
     - Format: `/whatsappnumber {Number} {Message}`
   - 👥 **Group chats**  
-    - The **exact group name** must be used  
-    - Case-sensitive (uppercase and lowercase must match)  
+    - The **exact group name** must be used.  
+    - Case-sensitive (uppercase and lowercase must match).  
     - Format: `/whatsappgroup {GroupName} {Message}`  
 
 ⚠️ For **WhatsApp private numbers**, a **manual whitelist** is required.  
 This whitelist can be managed **only by the bot owner**, for personal security and legal reasons.
 
 ### Other Discord Features
-- 🔔 Send alerts or notifications inside Discord  
-- ⚡ Custom commands and interactions  
-- 🛠️ Admin/moderation utilities  
-- 🎯 Role or channel management (optional, depends on setup)  
+- 🔔 Send alerts or notifications inside Discord.  
+- ⚡ Custom commands and interactions.  
+- 🛠️ Admin/moderation utilities.  
+- 🎯 Role or channel management (optional, depends on setup).  
 
 ---
 
 ## 📜 Commands
 
 ### Discord (message export)
-- `/telegramma {ID} {Message}` → send message to Telegram channel or private chat  
-- `/whatsappnumber {Number} {Message}` → send message to WhatsApp private number (with prefix)  
-- `/whatsappgroup {GroupName} {Message}` → send message to WhatsApp group (exact name, case-sensitive)  
+- `/telegramma {ID} {Message}` → send message to Telegram channel or private chat.  
+- `/whatsappnumber {Number} {Message}` → send message to WhatsApp private number (with prefix).  
+- `/whatsappgroup {GroupName} {Message}` → send message to WhatsApp group (exact name, case-sensitive).  
 
 ### Telegram (message export)
-- `/channel_info` → get info of the channel or private chat  
-- `/discordia` → send message to Discord [to be implemented]  
+- `/channel_info` → get info of the channel or private chat.  
+- `/discordia` → send message to Discord. [to be implemented]  
 
 ### WhatsApp (message export)
-- `/discordia` → send message to Discord [to be implemented]  
+- `/discordia` → send message to Discord. [to be implemented]  
 
 ---
 
 ## 🧠 How It Works
 
-1. The **Discord bot is the core application**  
-2. Telegram and WhatsApp act as **message sources and targets**  
+1. The **Discord bot is the core application.**  
+2. Telegram and WhatsApp act as **message sources and targets.**  
 3. Each incoming message is processed to extract:
    - sender name  
    - chat type (private or group)  
@@ -87,7 +87,7 @@ This whitelist can be managed **only by the bot owner**, for personal security a
 4. Messages can be:
    - imported **from Telegram and WhatsApp into Discord**  
    - sent **from Discord to Telegram and WhatsApp**  
-5. Everything is centralized and managed inside Discord  
+5. Everything is centralized and managed inside Discord.  
 
 ---
 
@@ -103,9 +103,9 @@ This whitelist can be managed **only by the bot owner**, for personal security a
 
 ## 🔒 Notes
 
-- Intended for personal automation and message aggregation  
-- The **source code will never be public**  
-- This **README is public** and exists only to explain how the system works  
+- Intended for personal automation and message aggregation.  
+- The **source code will never be published.**  
+- This **README is public** and exists only to explain how the system works.  
 
 ---
 
