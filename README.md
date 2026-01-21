@@ -86,3 +86,4 @@ The bot acts as a **central inbox inside Discord**, allowing you to receive mess
 </p>
 
 Created by **SkeleAEMME**
+README.md by **ChatGPT** bc i'm lazy asf
