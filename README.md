@@ -94,10 +94,10 @@ This whitelist can be managed **only by the bot owner**, for personal security a
 ## 📸 Screenshots
 
 ### WhatsApp
-![WhatsApp Preview](https://i.imgur.com/TGAAt5Z.jpeg)
+![WhatsApp Preview](https://i.imgur.com/yu6Zg7T.png)
 
 ### Telegram
-![Telegram Preview](https://imgur.com/a/M3tW2k4)
+![Telegram Preview](https://i.imgur.com/nlOfEnN.png)
 
 ---
 
