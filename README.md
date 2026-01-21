@@ -1,6 +1,6 @@
 #English Version
 
-# 🤖 KillyBot
+# 🤖 KillyBot 🇬🇧
 
 A **Discord bot built with Node.js** that imports and forwards messages from  
 **Telegram and WhatsApp** directly into Discord.
