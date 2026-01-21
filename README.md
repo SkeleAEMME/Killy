@@ -45,6 +45,9 @@ The bot acts as a **central inbox inside Discord**, allowing you to receive mess
 - 🛠️ Admin/moderation utilities  
 - 🎯 Role or channel management (optional, depends on setup)  
 
+### Telegram Interaction
+- 📤 Send messages from **Discord to Telegram** using the `/telegramma` slash command  
+
 ---
 
 ## 🧠 How It Works
@@ -55,7 +58,8 @@ The bot acts as a **central inbox inside Discord**, allowing you to receive mess
    - sender name
    - chat type (private or group)
    - group name (if applicable)
-4. The message is forwarded into Discord, keeping everything centralized
+4. Messages can also be **sent from Discord to Telegram**
+5. Everything is forwarded and managed inside Discord as a central hub
 
 ---
 
@@ -71,9 +75,9 @@ The bot acts as a **central inbox inside Discord**, allowing you to receive mess
 
 ## 🔒 Notes
 
-- Tokens and credentials must never be committed  
-- Session folders should be excluded via `.gitignore`  
-- Intended for personal automation and message aggregation
+- Intended for personal automation and message aggregation  
+- The **source code will never be public**  
+- This **README is public** and only explains how the system works  
 
 ---
 
@@ -85,5 +89,5 @@ The bot acts as a **central inbox inside Discord**, allowing you to receive mess
   </a>
 </p>
 
-Created by **SkeleAEMME**
+Created by **SkeleAEMME**  
 README.md by **ChatGPT** bc i'm lazy asf
