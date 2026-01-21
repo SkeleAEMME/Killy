@@ -1,9 +1,7 @@
-<div style="font-size:80px; font-weight:bold; color:#5865F2; font-family:Arial, sans-serif; text-align:center;">
-  KillyBot
-</div>
 
+# English Version
 
-# 🤖 KillyBot 🇬🇧
+# 🤖 KillyBot
 
 A **Discord bot built with Node.js** that imports and forwards messages from  
 **Telegram and WhatsApp** directly into Discord.
@@ -125,7 +123,7 @@ This whitelist can be managed **only by the bot owner**, for personal security a
 Created by **SkeleAEMME**  
 README.md by **ChatGPT** bc i'm lazy asf
 
-#Italian Version
+# Versione Italia
 
 # 🤖 KillyBot
 
