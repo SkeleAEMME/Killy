@@ -1,4 +1,3 @@
-
 # English Version
 
 # 🤖 KillyBot
@@ -16,15 +15,12 @@ The bot acts as a **central inbox inside Discord**, allowing you to receive mess
   <a href="https://nodejs.org/" target="_blank">
     <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=node.js&logoColor=white"/>
   </a>
-
   <a href="https://discord.js.org/" target="_blank">
     <img src="https://img.shields.io/badge/discord.js-5865F2?style=for-the-badge&logo=discord&logoColor=white"/>
   </a>
-
   <a href="https://telegraf.js.org/" target="_blank">
     <img src="https://img.shields.io/badge/Telegraf.js-26A5E4?style=for-the-badge&logo=telegram&logoColor=white"/>
   </a>
-
   <a href="https://wwebjs.dev/" target="_blank">
     <img src="https://img.shields.io/badge/whatsapp--web.js-25D366?style=for-the-badge&logo=whatsapp&logoColor=white"/>
   </a>
@@ -34,63 +30,63 @@ The bot acts as a **central inbox inside Discord**, allowing you to receive mess
 
 ## ✨ Features
 
-- 📥 Import messages from **Telegram** (DMs and Groups).  
-- 📥 Import messages from **WhatsApp** (DMs and Groups).  
-- 📨 Forward messages to **Discord.**  
-- 🏷️ Detect chat type (private / group).  
-- 📛 Show sender and group name.  
-- ⚙️ Clean and modular architecture.  
-
-### Discord → Other Platforms
-- 📤 Send messages from **Discord to Telegram.**  
-- 📤 Send messages from **Discord to WhatsApp**:
-  - 📞 **Private chats (numbers)**  
-    - Phone numbers must be written **with prefix**, fully concatenated, e.g., `{Number}`  
-    - Format: `/whatsappnumber {Number} {Message}`
-  - 👥 **Group chats**  
-    - The **exact group name** must be used.  
-    - Case-sensitive (uppercase and lowercase must match).  
-    - Format: `/whatsappgroup {GroupName} {Message}`  
-
-⚠️ For **WhatsApp private numbers**, a **manual whitelist** is required.  
-This whitelist can be managed **only by the bot owner**, for personal security and legal reasons.
-
-### Other Discord Features
-- 🔔 Send alerts or notifications inside Discord.  
-- ⚡ Custom commands and interactions.  
-- 🛠️ Admin/moderation utilities.  
-- 🎯 Role or channel management (optional, depends on setup).  
+- 📥 Import messages from **Telegram** (DMs and Groups).
+- 📥 Import messages from **WhatsApp** (DMs and Groups).
+- 📨 Forward messages to **Discord**.
+- 🏷️ Detect chat type (private / group).
+- 📛 Show sender name and group name.
+- 🖼️ Full image support (bidirectional).
+- ⚙️ Clean and modular architecture.
 
 ---
 
 ## 📜 Commands
 
-### Discord (message export)
-- `/telegramma {ID} {Message}` → send message to Telegram channel or private chat.  
-- `/whatsappnumber {Number} {Message}` → send message to WhatsApp private number (with prefix).  
-- `/whatsappgroup {GroupName} {Message}` → send message to WhatsApp group (exact name, case-sensitive).  
+### Discord → Telegram / WhatsApp
 
-### Telegram (message export)
-- `/channel_info` → get info of the channel or private chat.  
-- `/discordia` → send message to Discord. [to be implemented]  
+- `/telegramma {ID} {Message}`  
+  📤 Send a message to a Telegram channel or private chat.
 
-### WhatsApp (message export)
-- `/discordia` → send message to Discord. [to be implemented]  
+- `/whatsappnumber {Number} {Message} {Image}`  
+  📤 Send a message (and optional image) to a WhatsApp private number.  
+  `{Number}` must include the prefix, for example `39XXXXXXXXXX`  
+  (`39` is the Italian phone prefix).
+
+- `/whatsappgroup {GroupName} {Message} {Image}`  
+  📤 Send a message (and optional image) to a WhatsApp group.  
+  The group name must be **exact and case-sensitive**.
+
+⚠️ For **WhatsApp private numbers**, a **manual whitelist** is required.  
+This whitelist can be managed **only by the bot owner**, for security and legal reasons.
+
+---
+
+## 🖼️ Image Handling
+
+### Discord → WhatsApp
+- Images are fetched from the **Discord CDN URL**.
+- The image is loaded **directly into RAM**.
+- The image is then sent to WhatsApp as media.
+- ❌ No image is ever saved on disk.
+
+### WhatsApp → Discord
+- Incoming WhatsApp media is downloaded into **RAM only**.
+- The media is converted into a Discord attachment.
+- Sender and group information are preserved.
+- ❌ No media is stored permanently.
 
 ---
 
 ## 🧠 How It Works
 
-1. The **Discord bot is the core application.**  
-2. Telegram and WhatsApp act as **message sources and targets.**  
-3. Each incoming message is processed to extract:
+1. 🧩 Discord is the **core application**.
+2. 📡 Telegram and WhatsApp act as **message sources and targets**.
+3. 🧪 Each message is parsed to extract:
    - sender name  
    - chat type (private or group)  
-   - group name (if applicable)  
-4. Messages can be:
-   - imported **from Telegram and WhatsApp into Discord**  
-   - sent **from Discord to Telegram and WhatsApp**  
-5. Everything is centralized and managed inside Discord.  
+   - group name (if applicable)
+4. 🔁 Messages can flow in **both directions**.
+5. 🗂️ Everything is centralized inside Discord.
 
 ---
 
@@ -106,9 +102,9 @@ This whitelist can be managed **only by the bot owner**, for personal security a
 
 ## 🔒 Notes
 
-- Intended for personal automation and message aggregation.  
-- The **source code will never be published.**  
-- This **README is public** and exists only to explain how the system works.  
+- 🧠 Intended for personal automation and message aggregation.
+- 🔐 The source code will never be published.
+- 📄 This README exists only to explain how the system works.
 
 ---
 
@@ -123,32 +119,31 @@ This whitelist can be managed **only by the bot owner**, for personal security a
 Created by **SkeleAEMME**  
 README.md by **ChatGPT** bc i'm lazy asf
 
-# Versione Italia
+---
+
+# Versione Italiana
 
 # 🤖 KillyBot
 
-Un **bot per Discord costruito con Node.js** che importa e inoltra messaggi da  
+Un **bot per Discord sviluppato in Node.js** che importa e inoltra messaggi da  
 **Telegram e WhatsApp** direttamente su Discord.
 
-Il bot funge da **cassettone centrale di messaggi all’interno di Discord**, permettendoti di ricevere messaggi da più piattaforme social in un unico posto.
+Il bot funziona come una **casella di posta centralizzata**, permettendo di gestire più piattaforme da Discord.
 
 ---
 
-## 🔗 Tecnologie
+## 🔗 Tecnologie utilizzate
 
 <p align="left">
   <a href="https://nodejs.org/" target="_blank">
     <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=node.js&logoColor=white"/>
   </a>
-
   <a href="https://discord.js.org/" target="_blank">
     <img src="https://img.shields.io/badge/discord.js-5865F2?style=for-the-badge&logo=discord&logoColor=white"/>
   </a>
-
   <a href="https://telegraf.js.org/" target="_blank">
     <img src="https://img.shields.io/badge/Telegraf.js-26A5E4?style=for-the-badge&logo=telegram&logoColor=white"/>
   </a>
-
   <a href="https://wwebjs.dev/" target="_blank">
     <img src="https://img.shields.io/badge/whatsapp--web.js-25D366?style=for-the-badge&logo=whatsapp&logoColor=white"/>
   </a>
@@ -158,63 +153,62 @@ Il bot funge da **cassettone centrale di messaggi all’interno di Discord**, pe
 
 ## ✨ Funzionalità
 
-- 📥 Importa messaggi da **Telegram** (chat private e gruppi).  
-- 📥 Importa messaggi da **WhatsApp** (chat private e gruppi).  
-- 📨 Inoltra messaggi su **Discord**.  
-- 🏷️ Rileva il tipo di chat (privata / gruppo).  
-- 📛 Mostra il nome del mittente e il nome del gruppo.  
-- ⚙️ Architettura pulita e modulare.  
-
-### Discord → Altre Piattaforme
-- 📤 Invia messaggi da **Discord a Telegram**.  
-- 📤 Invia messaggi da **Discord a WhatsApp**:  
-  - 📞 **Chat private (numeri)**.  
-    - I numeri telefonici devono essere scritti **con prefisso**, tutti attaccati, es.: `{Number}`.  
-    - Formato: `/whatsappnumber {Number} {Message}`.  
-  - 👥 **Chat di gruppo**.  
-    - Deve essere usato **il nome esatto del gruppo WhatsApp**.  
-    - Sensibile alle maiuscole/minuscole.  
-    - Formato: `/whatsappgroup {GroupName} {Message}`.  
-
-⚠️ Per i **numeri WhatsApp privati**, è richiesta una **whitelist manuale**.  
-Questa whitelist può essere gestita **solo dal proprietario del bot**, per motivi di sicurezza personale e legali.
-
-### Altre funzionalità di Discord
-- 🔔 Invio di avvisi o notifiche all’interno di Discord.  
-- ⚡ Comandi slash personalizzati e interazioni.  
-- 🛠️ Utility per amministrazione/moderazione.  
-- 🎯 Gestione di ruoli o canali (opzionale, dipende dalla configurazione).
+- 📥 Importazione messaggi da **Telegram** (privati e gruppi).
+- 📥 Importazione messaggi da **WhatsApp** (privati e gruppi).
+- 📨 Inoltro messaggi su **Discord**.
+- 🏷️ Rilevamento automatico del tipo di chat.
+- 📛 Visualizzazione mittente e nome gruppo.
+- 🖼️ Supporto completo alle immagini.
+- ⚙️ Architettura pulita e modulare.
 
 ---
 
 ## 📜 Comandi
 
-### Discord (invio messaggi)
-- `/telegramma {ID} {Message}` → invia un messaggio a un canale o chat privata Telegram.  
-- `/whatsappnumber {Number} {Message}` → invia un messaggio a un numero WhatsApp privato (con prefisso).  
-- `/whatsappgroup {GroupName} {Message}` → invia un messaggio a un gruppo WhatsApp (nome esatto, case-sensitive).  
+### Discord → Telegram / WhatsApp
 
-### Telegram (invio messaggi)
-- `/channel_info` → ottiene informazioni sul canale o sulla chat privata corrente.  
-- `/discordia` → invia un messaggio a Discord *(in sviluppo)*.  
+- `/telegramma {ID} {Message}`  
+  📤 Invia un messaggio a una chat o canale Telegram.
 
-### WhatsApp (invio messaggi)
-- `/discordia` → invia un messaggio a Discord *(in sviluppo)*.  
+- `/whatsappnumber {Number} {Message} {Immagine}`  
+  📤 Invia un messaggio (con immagine opzionale) a un numero WhatsApp.  
+  `{Number}` deve includere il prefisso, ad esempio `39XXXXXXXXXX`  
+  (`39` è il prefisso telefonico italiano).
+
+- `/whatsappgroup {GroupName} {Message} {Immagine}`  
+  📤 Invia un messaggio (con immagine opzionale) a un gruppo WhatsApp.  
+  Il nome deve essere **identico e case-sensitive**.
+
+⚠️ I numeri WhatsApp privati richiedono una **whitelist manuale**, gestita solo dal proprietario del bot.
+
+---
+
+## 🖼️ Gestione delle immagini
+
+### Discord → WhatsApp
+- L’immagine viene presa dall’**URL Discord**.
+- Viene caricata **direttamente in RAM**.
+- Viene inviata a WhatsApp come media.
+- ❌ Nessun file viene salvato su disco.
+
+### WhatsApp → Discord
+- I media WhatsApp vengono scaricati **solo in RAM**.
+- Convertiti in allegati Discord.
+- Mittente e gruppo vengono mantenuti.
+- ❌ Nessun file viene memorizzato permanentemente.
 
 ---
 
 ## 🧠 Come funziona
 
-1. Il **bot Discord è l’applicazione principale**.  
-2. Telegram e WhatsApp agiscono come **sorgenti/bersagli di messaggi**.  
-3. Ogni messaggio in arrivo viene processato per estrarre:  
-   - nome del mittente;  
-   - tipo di chat (privata o gruppo);  
-   - nome del gruppo (se applicabile).  
-4. I messaggi possono essere:  
-   - importati **da Telegram e WhatsApp verso Discord**;  
-   - inviati **da Discord verso Telegram e WhatsApp**.  
-5. Tutto viene centralizzato e gestito dentro Discord.  
+1. 🧩 Discord è il centro del sistema.
+2. 📡 Telegram e WhatsApp sono sorgenti e destinazioni.
+3. 🧪 Ogni messaggio viene analizzato per estrarre:
+   - mittente  
+   - tipo di chat  
+   - nome del gruppo
+4. 🔁 Comunicazione bidirezionale.
+5. 🗂️ Tutto viene gestito dentro Discord.
 
 ---
 
@@ -230,9 +224,9 @@ Questa whitelist può essere gestita **solo dal proprietario del bot**, per moti
 
 ## 🔒 Note
 
-- Pensato per automazione personale e aggregazione di messaggi.  
-- Il **codice sorgente non sarà mai pubblico**.  
-- Questo **README è pubblico** e serve solo a spiegare come funziona il sistema.  
+- 🧠 Pensato per automazione personale.
+- 🔐 Il codice sorgente non sarà pubblico.
+- 📄 Questo README è solo descrittivo.
 
 ---
 
@@ -244,5 +238,5 @@ Questa whitelist può essere gestita **solo dal proprietario del bot**, per moti
   </a>
 </p>
 
-Creato da **SkeleAEMME**.  
-README.md scritto da **ChatGPT** bc i’m lazy asf.
+Creato da **SkeleAEMME**  
+README.md scritto da **ChatGPT** bc sono pigro
