@@ -35,7 +35,8 @@ The bot acts as a **central inbox inside Discord**, allowing you to receive mess
 - 📨 Forward messages to **Discord**.
 - 🏷️ Detect chat type (private / group).
 - 📛 Show sender name and group name.
-- 🖼️ Full image support (bidirectional).
+- 🖼️ Full image support (**Discord ↔ WhatsApp ↔ Telegram**).
+- 🔁 Bidirectional message flow.
 - ⚙️ Clean and modular architecture.
 
 ---
@@ -63,16 +64,30 @@ This whitelist can be managed **only by the bot owner**, for security and legal 
 
 ## 🖼️ Image Handling
 
+All images are processed **in-memory only**.
+
 ### Discord → WhatsApp
-- Images are fetched from the **Discord CDN URL**.
-- The image is loaded **directly into RAM**.
-- The image is then sent to WhatsApp as media.
-- ❌ No image is ever saved on disk.
+- Image is fetched from the **Discord CDN URL**.
+- Loaded directly into **RAM**.
+- Sent to WhatsApp as media.
+- ❌ No file is saved on disk.
+
+### Discord → Telegram
+- Image is fetched from the **Discord CDN URL**.
+- Loaded directly into **RAM**.
+- Sent to Telegram as media.
+- ❌ No file is saved on disk.
 
 ### WhatsApp → Discord
-- Incoming WhatsApp media is downloaded into **RAM only**.
-- The media is converted into a Discord attachment.
+- Media is downloaded **into RAM only**.
+- Converted into a Discord attachment.
 - Sender and group information are preserved.
+- ❌ No media is stored permanently.
+
+### Telegram → Discord
+- Media is downloaded **into RAM only**.
+- Converted into a Discord attachment.
+- Sender and chat information are preserved.
 - ❌ No media is stored permanently.
 
 ---
@@ -85,7 +100,7 @@ This whitelist can be managed **only by the bot owner**, for security and legal 
    - sender name  
    - chat type (private or group)  
    - group name (if applicable)
-4. 🔁 Messages can flow in **both directions**.
+4. 🔁 Messages and images flow **in both directions**.
 5. 🗂️ Everything is centralized inside Discord.
 
 ---
@@ -158,7 +173,8 @@ Il bot funziona come una **casella di posta centralizzata**, permettendo di gest
 - 📨 Inoltro messaggi su **Discord**.
 - 🏷️ Rilevamento automatico del tipo di chat.
 - 📛 Visualizzazione mittente e nome gruppo.
-- 🖼️ Supporto completo alle immagini.
+- 🖼️ Supporto completo immagini (**Discord ↔ WhatsApp ↔ Telegram**).
+- 🔁 Comunicazione bidirezionale.
 - ⚙️ Architettura pulita e modulare.
 
 ---
@@ -185,17 +201,31 @@ Il bot funziona come una **casella di posta centralizzata**, permettendo di gest
 
 ## 🖼️ Gestione delle immagini
 
+Tutte le immagini vengono gestite **esclusivamente in RAM**.
+
 ### Discord → WhatsApp
 - L’immagine viene presa dall’**URL Discord**.
-- Viene caricata **direttamente in RAM**.
-- Viene inviata a WhatsApp come media.
+- Caricata direttamente in **RAM**.
+- Inviata a WhatsApp come media.
+- ❌ Nessun file viene salvato su disco.
+
+### Discord → Telegram
+- L’immagine viene presa dall’**URL Discord**.
+- Caricata direttamente in **RAM**.
+- Inviata a Telegram come media.
 - ❌ Nessun file viene salvato su disco.
 
 ### WhatsApp → Discord
-- I media WhatsApp vengono scaricati **solo in RAM**.
+- I media vengono scaricati **solo in RAM**.
 - Convertiti in allegati Discord.
 - Mittente e gruppo vengono mantenuti.
-- ❌ Nessun file viene memorizzato permanentemente.
+- ❌ Nessun file viene memorizzato.
+
+### Telegram → Discord
+- I media vengono scaricati **solo in RAM**.
+- Convertiti in allegati Discord.
+- Mittente e chat vengono mantenuti.
+- ❌ Nessun file viene memorizzato.
 
 ---
 
@@ -207,8 +237,8 @@ Il bot funziona come una **casella di posta centralizzata**, permettendo di gest
    - mittente  
    - tipo di chat  
    - nome del gruppo
-4. 🔁 Comunicazione bidirezionale.
-5. 🗂️ Tutto viene gestito dentro Discord.
+4. 🔁 Messaggi e immagini viaggiano in entrambe le direzioni.
+5. 🗂️ Tutto viene gestito da Discord.
 
 ---
 
