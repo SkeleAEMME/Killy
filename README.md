@@ -2,10 +2,8 @@
 
 # 🤖 KillyBot
 
-A **Discord bot built with Node.js** that imports and forwards messages from  
-**Telegram and WhatsApp** directly into Discord.
-
-The bot acts as a **central inbox inside Discord**, allowing you to receive messages from multiple social platforms in one place.
+A **Discord bot built with Node.js** that imports messages from **Telegram and WhatsApp** into Discord **and allows sending messages from Discord to Telegram and WhatsApp**.  
+The bot acts as a **central inbox inside Discord**, allowing you to manage multiple platforms from one place.
 
 ---
 
@@ -30,14 +28,18 @@ The bot acts as a **central inbox inside Discord**, allowing you to receive mess
 
 ## ✨ Features
 
-- 📥 Import messages from **Telegram** (DMs and Groups).
-- 📥 Import messages from **WhatsApp** (DMs and Groups).
-- 📨 Forward messages to **Discord**.
-- 🏷️ Detect chat type (private / group).
-- 📛 Show sender name and group name.
-- 🖼️ Full image support (**Discord ↔ WhatsApp ↔ Telegram**).
-- 🔁 Bidirectional message flow.
-- ⚙️ Clean and modular architecture.
+- 📥 Import messages from **Telegram** (DMs and Groups)  
+- 📥 Import messages from **WhatsApp** (DMs and Groups)  
+- 📨 Forward messages to **Discord**  
+- 🏷️ Detect chat type (private / group)  
+- 📛 Show sender name and group name  
+- 🖼️ Full image support (**Discord ↔ WhatsApp ↔ Telegram**)  
+- 🔁 Bidirectional message flow  
+- ⚙️ Clean and modular architecture  
+- 💾 **Autocomplete support for all Discord commands** (`/whatsappgroup`, `/whatsappnumber`, `/telegramma`) based on saved chat/group info:
+  - WhatsApp: group names, group IDs, private chat IDs (contain phone numbers)  
+  - Telegram: group names, private chat names, group IDs, private chat IDs  
+- 🔒 Only the bot owner or users with database access can view **sensitive data (WhatsApp phone numbers only)**  
 
 ---
 
@@ -46,62 +48,67 @@ The bot acts as a **central inbox inside Discord**, allowing you to receive mess
 ### Discord → Telegram / WhatsApp
 
 - `/telegramma {ID} {Message}`  
-  📤 Send a message to a Telegram channel or private chat.
+  📤 Send a message to a Telegram channel or private chat.  
+  💾 Autocomplete suggests previously used groups or private chats for authorized users
 
 - `/whatsappnumber {Number} {Message} {Image}`  
   📤 Send a message (and optional image) to a WhatsApp private number.  
-  `{Number}` must include the prefix, for example `39XXXXXXXXXX`  
-  (`39` is the Italian phone prefix).
+  `{Number}` must include the prefix, e.g., `39XXXXXXXXXX`  
+  💾 Autocomplete suggests previously used private chat IDs for authorized users
 
 - `/whatsappgroup {GroupName} {Message} {Image}`  
-  📤 Send a message (and optional image) to a WhatsApp group.  
-  The group name must be **exact and case-sensitive**.
+  📤 Send a message (and optional image) to a WhatsApp group  
+  The group name must be **exact and case-sensitive**  
+  💾 Autocomplete suggests previously used group names for authorized users
 
-⚠️ For **WhatsApp private numbers**, a **manual whitelist** is required.  
-This whitelist can be managed **only by the bot owner**, for security and legal reasons.
+⚠️ For **WhatsApp private numbers**, a **manual whitelist** is required and managed only by the bot owner
 
 ---
 
 ## 🖼️ Image Handling
 
-All images are processed **in-memory only**.
+All images are processed **in-memory only**
 
 ### Discord → WhatsApp
-- Image is fetched from the **Discord CDN URL**.
-- Loaded directly into **RAM**.
-- Sent to WhatsApp as media.
-- ❌ No file is saved on disk.
+- Image is fetched from the **Discord CDN URL**  
+- Loaded directly into **RAM**  
+- Sent to WhatsApp as media  
+- ❌ No file is saved on disk
 
 ### Discord → Telegram
-- Image is fetched from the **Discord CDN URL**.
-- Loaded directly into **RAM**.
-- Sent to Telegram as media.
-- ❌ No file is saved on disk.
+- Image is fetched from the **Discord CDN URL**  
+- Loaded directly into **RAM**  
+- Sent to Telegram as media  
+- ❌ No file is saved on disk
 
 ### WhatsApp → Discord
-- Media is downloaded **into RAM only**.
-- Converted into a Discord attachment.
-- Sender and group information are preserved.
-- ❌ No media is stored permanently.
+- Media is downloaded **into RAM only**  
+- Converted into a Discord attachment  
+- Sender and group information are preserved  
+- ❌ No media is stored permanently
 
 ### Telegram → Discord
-- Media is downloaded **into RAM only**.
-- Converted into a Discord attachment.
-- Sender and chat information are preserved.
-- ❌ No media is stored permanently.
+- Media is downloaded **into RAM only**  
+- Converted into a Discord attachment  
+- Sender and chat information are preserved  
+- ❌ No media is stored permanently
 
 ---
 
 ## 🧠 How It Works
 
-1. 🧩 Discord is the **core application**.
-2. 📡 Telegram and WhatsApp act as **message sources and targets**.
+1. 🧩 Discord is the **core application**  
+2. 📡 Telegram and WhatsApp act as **message sources and targets**  
 3. 🧪 Each message is parsed to extract:
    - sender name  
    - chat type (private or group)  
-   - group name (if applicable)
-4. 🔁 Messages and images flow **in both directions**.
-5. 🗂️ Everything is centralized inside Discord.
+   - group name (if applicable)  
+4. 💾 Only **chat/group info** is saved for autocomplete (no messages):
+   - WhatsApp: group names, group IDs, private chat IDs (contain phone numbers)  
+   - Telegram: group names, private chat names, group IDs, private chat IDs  
+5. 🔁 Messages and images flow **in both directions**  
+6. 🗂️ Everything is centralized inside Discord  
+7. 🔒 Sensitive data saved for autocomplete is **WhatsApp phone numbers only**
 
 ---
 
@@ -117,9 +124,9 @@ All images are processed **in-memory only**.
 
 ## 🔒 Notes
 
-- 🧠 Intended for personal automation and message aggregation.
-- 🔐 The source code will never be published.
-- 📄 This README exists only to explain how the system works.
+- 🧠 Intended for personal automation and message aggregation  
+- 🔐 The source code will never be published  
+- 📄 Only the bot owner or authorized users can view **sensitive data (WhatsApp phone numbers only)**
 
 ---
 
@@ -132,7 +139,7 @@ All images are processed **in-memory only**.
 </p>
 
 Created by **SkeleAEMME**  
-README.md by **ChatGPT** bc i'm lazy asf
+README.md by **ChatGPT (GPT-5 mini)**
 
 ---
 
@@ -140,9 +147,7 @@ README.md by **ChatGPT** bc i'm lazy asf
 
 # 🤖 KillyBot
 
-Un **bot per Discord sviluppato in Node.js** che importa e inoltra messaggi da  
-**Telegram e WhatsApp** direttamente su Discord.
-
+Un **bot per Discord sviluppato in Node.js** che importa messaggi da **Telegram e WhatsApp** su Discord **e permette di inviare messaggi da Discord verso Telegram e WhatsApp**.  
 Il bot funziona come una **casella di posta centralizzata**, permettendo di gestire più piattaforme da Discord.
 
 ---
@@ -168,77 +173,85 @@ Il bot funziona come una **casella di posta centralizzata**, permettendo di gest
 
 ## ✨ Funzionalità
 
-- 📥 Importazione messaggi da **Telegram** (privati e gruppi).
-- 📥 Importazione messaggi da **WhatsApp** (privati e gruppi).
-- 📨 Inoltro messaggi su **Discord**.
-- 🏷️ Rilevamento automatico del tipo di chat.
-- 📛 Visualizzazione mittente e nome gruppo.
-- 🖼️ Supporto completo immagini (**Discord ↔ WhatsApp ↔ Telegram**).
-- 🔁 Comunicazione bidirezionale.
-- ⚙️ Architettura pulita e modulare.
+- 📥 Importazione messaggi da **Telegram** (privati e gruppi)  
+- 📥 Importazione messaggi da **WhatsApp** (privati e gruppi)  
+- 📨 Inoltro messaggi su **Discord**  
+- 🏷️ Rilevamento automatico del tipo di chat  
+- 📛 Visualizzazione mittente e nome gruppo  
+- 🖼️ Supporto completo immagini (**Discord ↔ WhatsApp ↔ Telegram**)  
+- 🔁 Comunicazione bidirezionale  
+- ⚙️ Architettura pulita e modulare  
+- 💾 **Autocomplete su tutti i comandi Discord** (`/whatsappgroup`, `/whatsappnumber`, `/telegramma`) basato solo su:
+  - WhatsApp: nomi dei gruppi, ID dei gruppi, ID chat private (contengono numeri)  
+  - Telegram: nomi dei gruppi, nomi chat private, ID dei gruppi, ID chat private  
+- 🔒 Solo l’owner del bot o utenti autorizzati possono visualizzare **dati sensibili (numeri WhatsApp solamente)**
 
 ---
 
 ## 📜 Comandi
 
-### Discord → Telegram / WhatsApp
+- `/telegramma {ID} {Messaggio}`  
+  📤 Invia un messaggio a una chat o canale Telegram  
+  💾 Autocomplete suggerisce gruppi o chat private precedentemente utilizzati per utenti autorizzati
 
-- `/telegramma {ID} {Message}`  
-  📤 Invia un messaggio a una chat o canale Telegram.
+- `/whatsappnumber {Numero} {Messaggio} {Immagine}`  
+  📤 Invia un messaggio (con immagine opzionale) su WhatsApp ad un numero 
+  `{Numero}` deve includere il prefisso, es. `39XXXXXXXXXX`  
+  💾 Autocomplete suggerisce chat private precedentemente utilizzate per utenti autorizzati
 
-- `/whatsappnumber {Number} {Message} {Immagine}`  
-  📤 Invia un messaggio (con immagine opzionale) a un numero WhatsApp.  
-  `{Number}` deve includere il prefisso, ad esempio `39XXXXXXXXXX`  
-  (`39` è il prefisso telefonico italiano).
+- `/whatsappgroup {NomeGruppo} {Messaggio} {Immagine}`  
+  📤 Invia un messaggio (con immagine opzionale) su un gruppo WhatsApp  
+  Il nome deve essere **identico e case-sensitive**  
+  💾 Autocomplete suggerisce gruppi precedentemente utilizzati per utenti autorizzati
 
-- `/whatsappgroup {GroupName} {Message} {Immagine}`  
-  📤 Invia un messaggio (con immagine opzionale) a un gruppo WhatsApp.  
-  Il nome deve essere **identico e case-sensitive**.
-
-⚠️ I numeri WhatsApp privati richiedono una **whitelist manuale**, gestita solo dal proprietario del bot.
+⚠️ I numeri privati WhatsApp richiedono una **whitelist manuale**, gestita solo dall’owner del bot
 
 ---
 
 ## 🖼️ Gestione delle immagini
 
-Tutte le immagini vengono gestite **esclusivamente in RAM**.
+Tutte le immagini vengono gestite **esclusivamente in RAM**
 
 ### Discord → WhatsApp
-- L’immagine viene presa dall’**URL Discord**.
-- Caricata direttamente in **RAM**.
-- Inviata a WhatsApp come media.
-- ❌ Nessun file viene salvato su disco.
+- Immagine presa dall’**URL Discord**  
+- Caricata direttamente in **RAM**  
+- Inviata a WhatsApp come media  
+- ❌ Nessun file salvato su disco
 
 ### Discord → Telegram
-- L’immagine viene presa dall’**URL Discord**.
-- Caricata direttamente in **RAM**.
-- Inviata a Telegram come media.
-- ❌ Nessun file viene salvato su disco.
+- Immagine presa dall’**URL Discord**  
+- Caricata direttamente in **RAM**  
+- Inviata a Telegram come media  
+- ❌ Nessun file salvato su disco
 
 ### WhatsApp → Discord
-- I media vengono scaricati **solo in RAM**.
-- Convertiti in allegati Discord.
-- Mittente e gruppo vengono mantenuti.
-- ❌ Nessun file viene memorizzato.
+- Media scaricato **solo in RAM**  
+- Convertito in allegato Discord  
+- Mittente e gruppo preservati  
+- ❌ Nessun file salvato permanentemente
 
 ### Telegram → Discord
-- I media vengono scaricati **solo in RAM**.
-- Convertiti in allegati Discord.
-- Mittente e chat vengono mantenuti.
-- ❌ Nessun file viene memorizzato.
+- Media scaricato **solo in RAM**  
+- Convertito in allegato Discord  
+- Mittente e chat preservati  
+- ❌ Nessun file salvato permanentemente
 
 ---
 
 ## 🧠 Come funziona
 
-1. 🧩 Discord è il centro del sistema.
-2. 📡 Telegram e WhatsApp sono sorgenti e destinazioni.
+1. 🧩 Discord è il **centro del sistema**  
+2. 📡 Telegram e WhatsApp agiscono come **sorgenti e destinazioni**  
 3. 🧪 Ogni messaggio viene analizzato per estrarre:
    - mittente  
-   - tipo di chat  
-   - nome del gruppo
-4. 🔁 Messaggi e immagini viaggiano in entrambe le direzioni.
-5. 🗂️ Tutto viene gestito da Discord.
+   - tipo di chat (privata o gruppo)  
+   - nome del gruppo (se applicabile)  
+4. 💾 Solo **info chat/gruppo** salvate per autocomplete (nessun messaggio):
+   - WhatsApp: nomi dei gruppi, ID dei gruppi, ID chat private (contengono numeri)  
+   - Telegram: nomi dei gruppi, nomi chat private, ID dei gruppi, ID chat private  
+5. 🔁 Messaggi e immagini viaggiano **in entrambe le direzioni**  
+6. 🗂️ Tutto è centralizzato in Discord  
+7. 🔒 Dati sensibili salvati per autocomplete: **solamente numeri di telefono**
 
 ---
 
@@ -254,9 +267,9 @@ Tutte le immagini vengono gestite **esclusivamente in RAM**.
 
 ## 🔒 Note
 
-- 🧠 Pensato per automazione personale.
-- 🔐 Il codice sorgente non sarà pubblico.
-- 📄 Questo README è solo descrittivo.
+- 🧠 Pensato per automazione personale e aggregazione messaggi  
+- 🔐 Il codice sorgente non sarà pubblico  
+- 📄 Solo l’owner del bot o utenti autorizzati possono visualizzare **dati sensibili (solamente numeri di Telefono)**
 
 ---
 
@@ -269,4 +282,4 @@ Tutte le immagini vengono gestite **esclusivamente in RAM**.
 </p>
 
 Creato da **SkeleAEMME**  
-README.md scritto da **ChatGPT** bc sono pigro
+README.md by **ChatGPT (GPT-5 mini)**
