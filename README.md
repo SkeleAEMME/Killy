@@ -36,9 +36,13 @@ The bot acts as a **central inbox inside Discord**, allowing you to manage multi
 - 🖼️ Full image support (**Discord ↔ WhatsApp ↔ Telegram**)  
 - 🔁 Bidirectional message flow  
 - ⚙️ Clean and modular architecture  
-- 💾 **Autocomplete support for all Discord commands** (`/whatsappgroup`, `/whatsappnumber`, `/telegramma`) based on saved chat/group info:
-  - WhatsApp: group names, group IDs, private chat IDs (contain phone numbers)  
-  - Telegram: group names, private chat names, group IDs, private chat IDs  
+- 💾 **Autocomplete support for all Discord commands** (`/whatsappgroup`, `/whatsappnumber`, `/telegramma`) based on saved chat/group info  
+- 📇 **WhatsApp contact management**:
+  - `/crea-contatto {Name} {Number}` → save a new contact  
+  - `/elimina-contatto {Number}` → remove a contact  
+  - `/info-contatto {Number}` → get info: Name, WhatsApp ID, profile picture, Business account, registration date & time (GMT+1 Rome)  
+- 🔁 **Telegram → Discord** via `/discordia` command (documentation is directly in the command itself; images not yet supported)  
+- 🔁 **WhatsApp → Discord** `/discordia` coming by the end of the week  
 - 🔒 Only the bot owner or users with database access can view **sensitive data (WhatsApp phone numbers only)**  
 
 ---
@@ -48,11 +52,11 @@ The bot acts as a **central inbox inside Discord**, allowing you to manage multi
 ### Discord → Telegram / WhatsApp
 
 - `/telegramma {ID} {Message}`  
-  📤 Send a message to a Telegram channel or private chat.  
+  📤 Send a message to a Telegram channel or private chat  
   💾 Autocomplete suggests previously used groups or private chats for authorized users
 
 - `/whatsappnumber {Number} {Message} {Image}`  
-  📤 Send a message (and optional image) to a WhatsApp private number.  
+  📤 Send a message (and optional image) to a WhatsApp private number  
   `{Number}` must include the prefix, e.g., `39XXXXXXXXXX`  
   💾 Autocomplete suggests previously used private chat IDs for authorized users
 
@@ -60,6 +64,27 @@ The bot acts as a **central inbox inside Discord**, allowing you to manage multi
   📤 Send a message (and optional image) to a WhatsApp group  
   The group name must be **exact and case-sensitive**  
   💾 Autocomplete suggests previously used group names for authorized users
+
+- `/crea-contatto {Name} {Number}`  
+  📇 Register a new WhatsApp contact
+
+- `/elimina-contatto {Number}`  
+  ❌ Delete a WhatsApp contact
+
+- `/info-contatto {Number}`  
+  ℹ️ Show contact info:
+  - Name  
+  - WhatsApp ID  
+  - Profile picture URL  
+  - Business account or not  
+  - Registration date/time in **DD/MM/YYYY HH:MM GMT+1 Rome**
+
+- Telegram `/discordia`  
+  🔁 Send messages from Telegram to Discord. See command help for usage.  
+  ⚠️ Images are **not yet supported**.  
+
+- WhatsApp `/discordia`  
+  🔜 Coming by the end of the week
 
 ⚠️ For **WhatsApp private numbers**, a **manual whitelist** is required and managed only by the bot owner
 
@@ -103,22 +128,34 @@ All images are processed **in-memory only**
    - sender name  
    - chat type (private or group)  
    - group name (if applicable)  
-4. 💾 Only **chat/group info** is saved for autocomplete (no messages):
+4. 💾 Only **chat/group info and contacts** are saved for autocomplete (no messages):
    - WhatsApp: group names, group IDs, private chat IDs (contain phone numbers)  
    - Telegram: group names, private chat names, group IDs, private chat IDs  
 5. 🔁 Messages and images flow **in both directions**  
 6. 🗂️ Everything is centralized inside Discord  
-7. 🔒 Sensitive data saved for autocomplete is **WhatsApp phone numbers only**
+7. 🔒 Sensitive data saved for autocomplete: **WhatsApp phone numbers only**
 
 ---
 
 ## 📸 Screenshots
 
-### WhatsApp
-![WhatsApp Preview](https://i.imgur.com/yu6Zg7T.png)
+### Discord → Telegram
+![Discord → Telegram](https://i.imgur.com/hJqd7BW.png)
 
-### Telegram
-![Telegram Preview](https://i.imgur.com/nlOfEnN.png)
+### Discord → Telegram Group
+![Discord → Telegram Group](https://i.imgur.com/U6MFJqO.png)
+
+### Discord → WhatsApp
+![Discord → WhatsApp](https://i.imgur.com/GIKCUBt.png)
+
+### Discord → WhatsApp Group
+![Discord → WhatsApp Group](https://i.imgur.com/7PItUjE.png)
+
+### Telegram → Discord
+![Telegram → Discord](https://i.imgur.com/ZE2i8Nd.png)
+
+### /crea-contatto, /info-contatto, /elimina-contatto
+![Contacts](https://i.imgur.com/75kAVDe.png)
 
 ---
 
@@ -184,6 +221,12 @@ Il bot funziona come una **casella di posta centralizzata**, permettendo di gest
 - 💾 **Autocomplete su tutti i comandi Discord** (`/whatsappgroup`, `/whatsappnumber`, `/telegramma`) basato solo su:
   - WhatsApp: nomi dei gruppi, ID dei gruppi, ID chat private (contengono numeri)  
   - Telegram: nomi dei gruppi, nomi chat private, ID dei gruppi, ID chat private  
+- 📇 **Gestione contatti WhatsApp**:
+  - `/crea-contatto {Nome} {Numero}` → registra un nuovo contatto  
+  - `/elimina-contatto {Numero}` → elimina un contatto  
+  - `/info-contatto {Numero}` → mostra info contatto: Nome, ID WhatsApp, foto profilo, account Business, data/ora registrazione in **DD/MM/YYYY HH:MM GMT+1 Roma**  
+- 🔁 **Telegram → Discord** tramite comando `/discordia` (spiegazione direttamente nel comando; immagini non ancora supportate)  
+- 🔁 **WhatsApp → Discord** `/discordia` in arrivo entro fine settimana  
 - 🔒 Solo l’owner del bot o utenti autorizzati possono visualizzare **dati sensibili (numeri WhatsApp solamente)**
 
 ---
@@ -195,7 +238,7 @@ Il bot funziona come una **casella di posta centralizzata**, permettendo di gest
   💾 Autocomplete suggerisce gruppi o chat private precedentemente utilizzati per utenti autorizzati
 
 - `/whatsappnumber {Numero} {Messaggio} {Immagine}`  
-  📤 Invia un messaggio (con immagine opzionale) su WhatsApp ad un numero 
+  📤 Invia un messaggio (con immagine opzionale) su WhatsApp ad un numero  
   `{Numero}` deve includere il prefisso, es. `39XXXXXXXXXX`  
   💾 Autocomplete suggerisce chat private precedentemente utilizzate per utenti autorizzati
 
@@ -203,6 +246,27 @@ Il bot funziona come una **casella di posta centralizzata**, permettendo di gest
   📤 Invia un messaggio (con immagine opzionale) su un gruppo WhatsApp  
   Il nome deve essere **identico e case-sensitive**  
   💾 Autocomplete suggerisce gruppi precedentemente utilizzati per utenti autorizzati
+
+- `/crea-contatto {Nome} {Numero}`  
+  📇 Registra un nuovo contatto WhatsApp
+
+- `/elimina-contatto {Numero}`  
+  ❌ Elimina un contatto WhatsApp
+
+- `/info-contatto {Numero}`  
+  ℹ️ Mostra info contatto:
+  - Nome  
+  - ID WhatsApp  
+  - Foto profilo  
+  - Account Business o meno  
+  - Data/ora registrazione in **DD/MM/YYYY HH:MM GMT+1 Roma**
+
+- Telegram `/discordia`  
+  🔁 Invia messaggi da Telegram a Discord. Vedere aiuto comando per dettagli.  
+  ⚠️ Le immagini **non sono ancora supportate**
+
+- WhatsApp `/discordia`  
+  🔜 Arriverà entro fine settimana
 
 ⚠️ I numeri privati WhatsApp richiedono una **whitelist manuale**, gestita solo dall’owner del bot
 
@@ -246,7 +310,7 @@ Tutte le immagini vengono gestite **esclusivamente in RAM**
    - mittente  
    - tipo di chat (privata o gruppo)  
    - nome del gruppo (se applicabile)  
-4. 💾 Solo **info chat/gruppo** salvate per autocomplete (nessun messaggio):
+4. 💾 Solo **info chat/gruppo e contatti** salvate per autocomplete (nessun messaggio):
    - WhatsApp: nomi dei gruppi, ID dei gruppi, ID chat private (contengono numeri)  
    - Telegram: nomi dei gruppi, nomi chat private, ID dei gruppi, ID chat private  
 5. 🔁 Messaggi e immagini viaggiano **in entrambe le direzioni**  
@@ -257,11 +321,23 @@ Tutte le immagini vengono gestite **esclusivamente in RAM**
 
 ## 📸 Screenshot
 
-### WhatsApp
-![WhatsApp Preview](https://i.imgur.com/yu6Zg7T.png)
+### Discord → Telegram
+![Discord → Telegram](https://i.imgur.com/hJqd7BW.png)
 
-### Telegram
-![Telegram Preview](https://i.imgur.com/nlOfEnN.png)
+### Discord → Telegram Group
+![Discord → Telegram Group](https://i.imgur.com/U6MFJqO.png)
+
+### Discord → WhatsApp
+![Discord → WhatsApp](https://i.imgur.com/GIKCUBt.png)
+
+### Discord → WhatsApp Group
+![Discord → WhatsApp Group](https://i.imgur.com/7PItUjE.png)
+
+### Telegram → Discord
+![Telegram → Discord](https://i.imgur.com/ZE2i8Nd.png)
+
+### /crea-contatto, /info-contatto, /elimina-contatto
+![Contacts](https://i.imgur.com/75kAVDe.png)
 
 ---
 
